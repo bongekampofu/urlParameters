@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Details</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+        {% for food in food_details %}
+        <tr>
+            <td>{{ food.name }}</td>
+            <td>{{ food.details }}</td>
+            <td>${{ food.price }}</td>
+            <td>{{ food.quantity }}</td>
+            <td>${{ food.price * food.quantity }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('index') }}">Back to Menu</a>
+</body>
+</html>
+

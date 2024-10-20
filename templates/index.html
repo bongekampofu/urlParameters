@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Food List</title>
+</head>
+<body>
+    <h1>Food List</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Details</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Add to Cart</th>
+        </tr>
+        {% for food in food_items %}
+        <tr>
+            <td>{{ food[1] }}</td>
+            <td>{{ food[2] }}</td>
+            <td>£{{ food[3] }}</td>
+
+                <form action="{{ url_for('add_to_cart', food_id=food[0]) }}" method="POST">
+                  <td>
+                    <input type="number" name="quantity" min="1" value="1" required>
+                  </td>
+                    <td>
+                    <input type="submit" value="Add to Cart">
+                    </td>
+                </form>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('view_cart') }}">View Cart</a>
+</body>
+</html>
+
